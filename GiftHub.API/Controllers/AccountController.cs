@@ -16,6 +16,8 @@ using Microsoft.Owin.Security.OAuth;
 using GiftHub.API.Models;
 using GiftHub.API.Providers;
 using GiftHub.API.Results;
+using System.Linq;
+using static GiftHub.API.ApplicationUserManager;
 
 namespace GiftHub.API.Controllers
 {
@@ -25,6 +27,8 @@ namespace GiftHub.API.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
+        
 
         public AccountController()
         {
@@ -35,6 +39,27 @@ namespace GiftHub.API.Controllers
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+        }
+
+        public AccountController(ApplicationUserManager userManager,
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat,
+            ApplicationRoleManager roleManager)
+        {
+            UserManager = userManager;
+            AccessTokenFormat = accessTokenFormat;
+            RoleManager = roleManager;
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? Request.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
         }
 
         public ApplicationUserManager UserManager
@@ -50,6 +75,47 @@ namespace GiftHub.API.Controllers
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+
+        [AllowAnonymous]
+        [Route("users/{id:guid}/roles")]
+        [HttpPut]
+        public async Task<IHttpActionResult> AssignRolesToUser(string id, string[] rolesToAssign)
+        {
+            if (rolesToAssign == null)
+            {
+                return this.BadRequest("No roles specified");
+            }
+
+            //  find the user we want to assign roles to
+            var appUser = await this.UserManager.FindByIdAsync(id);
+
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            //  check if the user currently has any roles
+            var currentRoles = await this.UserManager.GetRolesAsync(appUser.Id);
+
+            var rolesNotExist = rolesToAssign.Except(this.RoleManager.Roles.Select(x => x.Name)).ToArray();
+
+            //if (!removeResult.Succeeded)
+            //{
+            //    ModelState.AddModelError("", "Failed to remove user roles");
+            //    return BadRequest(ModelState);
+            //}
+
+            //  assign user to new role(s)
+            IdentityResult addResult = await this.UserManager.AddToRolesAsync(appUser.Id, rolesToAssign);
+
+            if (!addResult.Succeeded)
+            {
+                ModelState.AddModelError("", "Failed to add user roles");
+                return BadRequest(ModelState);
+            }
+
+            return Ok(new { userId = id, rolesAssigned = rolesToAssign });
+        }
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
