@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Linq;
 using GiftHub.API.Models;
+using GiftHub.Contracts;
 using GiftHub.Data;
 using GiftHub.Models;
 
 namespace GiftHub.Services
 {
-    public class CompanyService
+    public class CompanyService : ICompanyService
     {
         private readonly Guid _userId;
 
@@ -26,6 +28,24 @@ namespace GiftHub.Services
                     };
                 context.Company.Add(entity);
                 return context.SaveChanges() == 1;
+            }
+        }
+
+        public CompanyDetailViewModel GetCompanyById(int companyId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var entity =
+                    context
+                        .Company
+                        .Single(e => e.CompanyId == companyId);
+
+                return
+                    new CompanyDetailViewModel
+                    {
+                        CompanyName = entity.CompanyName,
+                        CompanyAmount = entity.CompanyAmount
+                    };
             }
         }
     }

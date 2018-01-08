@@ -27,5 +27,14 @@ namespace GiftHub.API.Controllers
             var companyService = new CompanyService(userId);
             return companyService;
         }
+
+        public IHttpActionResult Get(int id)
+        {
+            CompanyService companyService = CreateCompanyService();
+
+            var company = companyService.GetCompanyById(id);
+
+            return Ok(company);
+        }
     }
 }
