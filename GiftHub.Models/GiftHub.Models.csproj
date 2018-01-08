@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompanyCreateViewModel.cs" />
+    <Compile Include="CompanyDetailViewModel.cs" />
     <Compile Include="GiftCardCreateViewModel.cs" />
     <Compile Include="GiftCardViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
