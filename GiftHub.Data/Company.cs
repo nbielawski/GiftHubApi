@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GiftHub.Data
 {
@@ -12,6 +8,7 @@ namespace GiftHub.Data
         [Key]
         public int CompanyId { get; set; }
         public string CompanyName { get; set; }
+        public decimal CompanyAmount { get; set; }
 
         public virtual ICollection<GiftCard> GiftCards { get; set; }
     }

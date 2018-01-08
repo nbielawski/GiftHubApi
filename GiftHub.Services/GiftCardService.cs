@@ -1,13 +1,10 @@
-﻿using GiftHub.API.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using GiftHub.API.Models;
 using GiftHub.Contracts;
 using GiftHub.Data;
 using GiftHub.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GiftHub.Services
 {
@@ -49,6 +46,7 @@ namespace GiftHub.Services
                                 .Where(e => e.CompanyName == model.CompanyName)
                                 .FirstOrDefault();
 
+
                 var companyId = company.CompanyId;
 
                 var entity =
@@ -65,9 +63,12 @@ namespace GiftHub.Services
                                 AccessNumber = model.AccessNumber
                             };
 
+                company.CompanyAmount = company.CompanyAmount + entity.Amount;
+
                 context.GiftCard.Add(entity);
                 return context.SaveChanges() == 1;
             }
         }
+
     }
 }
