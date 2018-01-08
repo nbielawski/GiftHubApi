@@ -18,6 +18,7 @@ using GiftHub.API.Providers;
 using GiftHub.API.Results;
 using System.Linq;
 using static GiftHub.API.ApplicationUserManager;
+using System.Web.Security;
 
 namespace GiftHub.API.Controllers
 {
@@ -130,6 +131,16 @@ namespace GiftHub.API.Controllers
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
+        }
+
+        //  GET api/Account/AdminCheck
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Route("adminCheck")]
+        [HttpPost]
+        public bool GetAdmin()
+        {
+
+            return User.IsInRole("admin");
         }
 
         // POST api/Account/Logout

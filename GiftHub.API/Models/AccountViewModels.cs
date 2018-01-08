@@ -34,6 +34,11 @@ namespace GiftHub.API.Models
         public string LoginProvider { get; set; }
     }
 
+    public class UserRoleViewModel
+    {
+        public string[] Roles { get; set; }
+    }
+
     public class UserLoginInfoViewModel
     {
         public string LoginProvider { get; set; }
