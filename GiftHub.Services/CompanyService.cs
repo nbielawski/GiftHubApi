@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GiftHub.API.Models;
 using GiftHub.Contracts;
@@ -46,6 +47,25 @@ namespace GiftHub.Services
                         CompanyName = entity.CompanyName,
                         CompanyAmount = entity.CompanyAmount
                     };
+            }
+        }
+
+        public IEnumerable<CompanyDetailViewModel> GetCompanies()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query = context
+                                .Company
+                                .Select(
+                                    e =>
+                                    new CompanyDetailViewModel
+                                    {
+                                        CompanyName = e.CompanyName,
+                                        CompanyAmount = e.CompanyAmount
+                                    }
+                                );
+
+                return query.ToArray();
             }
         }
     }

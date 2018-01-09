@@ -8,7 +8,7 @@ namespace GiftHub.API.Controllers
 {
     public class CompanyController : ApiController
     {
-        //  POST /api/Card
+        //  POST /api/Company
         public IHttpActionResult Post(CompanyCreateViewModel company)
         {
             if (!ModelState.IsValid)
@@ -21,13 +21,17 @@ namespace GiftHub.API.Controllers
             return Ok();
         }
 
-        private CompanyService CreateCompanyService()
+        //  GET /api/Company
+        public IHttpActionResult Get()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var companyService = new CompanyService(userId);
-            return companyService;
+            CompanyService companyService = CreateCompanyService();
+
+            var companies = companyService.GetCompanies();
+
+            return Ok(companies);
         }
 
+        //  GET /api/Company/{id}
         public IHttpActionResult Get(int id)
         {
             CompanyService companyService = CreateCompanyService();
@@ -35,6 +39,13 @@ namespace GiftHub.API.Controllers
             var company = companyService.GetCompanyById(id);
 
             return Ok(company);
+        }
+
+        private CompanyService CreateCompanyService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var companyService = new CompanyService(userId);
+            return companyService;
         }
     }
 }
