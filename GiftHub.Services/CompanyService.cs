@@ -19,6 +19,7 @@ namespace GiftHub.Services
 
         public bool CreateCompany(CompanyCreateViewModel model)
         {
+
             using (var context = new ApplicationDbContext())
             {
                 var entity =
