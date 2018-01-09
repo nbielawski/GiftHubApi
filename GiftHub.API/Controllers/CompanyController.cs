@@ -11,6 +11,11 @@ namespace GiftHub.API.Controllers
         //  POST /api/Company
         public IHttpActionResult Post(CompanyCreateViewModel company)
         {
+            if (company == null)
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
