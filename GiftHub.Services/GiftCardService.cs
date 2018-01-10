@@ -31,7 +31,13 @@ namespace GiftHub.Services
                         }
                     );
 
-                return query.ToArray();
+                var total = GetDonation().Sum(e => Convert.ToInt64(e.Amount));
+                return query;
+                //sum = GetDonation().Sum();
+                //GetDonation().Sum(e => e.Amount)
+
+                return query;
+                decimal totalDonation = (from x in GetDonation() select x.Amount).Sum();
             }
         }
 
