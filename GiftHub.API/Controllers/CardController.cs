@@ -1,12 +1,8 @@
-﻿using GiftHub.Models;
+﻿using System;
+using System.Web.Http;
+using GiftHub.Models;
 using GiftHub.Services;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 
 namespace GiftHub.API.Controllers
 {
@@ -41,5 +37,13 @@ namespace GiftHub.API.Controllers
             var cardService = new GiftCardService(userId);
             return cardService;
         }
+
+        //public IHttpActionResult GetBalance()
+        //{
+        //    var userId = Guid.Parse(User.Identity.GetUserId());
+        //    var cardService = new GiftCardService(userId);
+        //    var balance = cardService.GetBalance();
+        //    return Ok(balance);
+        //}
     }
 }
