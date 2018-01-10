@@ -90,5 +90,20 @@ namespace GiftHub.Services
             }
         }
 
+
+        public List<string> CompaniesDropdown()
+        {
+
+            using (var context = new ApplicationDbContext())
+            {
+                
+
+                List<string> list = (from c in context.Company
+                                     select c.CompanyName.ToString()).ToList();
+
+                return list;
+            }
+        }
+
     }
 }
