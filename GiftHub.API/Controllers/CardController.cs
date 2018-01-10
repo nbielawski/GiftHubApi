@@ -38,12 +38,12 @@ namespace GiftHub.API.Controllers
             return cardService;
         }
 
-        //public IHttpActionResult GetBalance()
-        //{
-        //    var userId = Guid.Parse(User.Identity.GetUserId());
-        //    var cardService = new GiftCardService(userId);
-        //    var balance = cardService.GetBalance();
-        //    return Ok(balance);
-        //}
+        public IHttpActionResult GetBalance()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var cardService = new GiftCardService(userId);
+            var balance = cardService.GetDonation();
+            return Ok(balance);
+        }
     }
 }
