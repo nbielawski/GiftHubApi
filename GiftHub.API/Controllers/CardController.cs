@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Http;
 using GiftHub.Models;
 using GiftHub.Services;
@@ -38,12 +39,20 @@ namespace GiftHub.API.Controllers
             return cardService;
         }
 
-        public IHttpActionResult GetBalance()
+        //public IHttpActionResult GetBalance()
+        //{
+        //    var userId = Guid.Parse(User.Identity.GetUserId());
+        //    var cardService = new GiftCardService(userId);
+        //    var balance = cardService.GetDonation();
+        //    return Ok(balance);
+        //}
+
+        public decimal TotalDonation()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var cardService = new GiftCardService(userId);
-            var balance = cardService.GetDonation();
-            return Ok(balance);
+            var total = cardService.GetDonation().Sum(e => e.Amount);
+            return total;
         }
     }
 }
