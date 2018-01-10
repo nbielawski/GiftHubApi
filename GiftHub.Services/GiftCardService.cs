@@ -17,6 +17,27 @@ namespace GiftHub.Services
             _userId = userId;
         }
 
+        public IEnumerable<GiftCardViewModel> GetDonation()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query = context
+                    .GiftCard
+                    .Where(e => e.OwnerId == _userId)
+                    .Select(
+                        e => new GiftCardViewModel
+                        {
+                            Amount = e.Amount
+                        }
+                    );
+
+
+                return query.ToArray();
+            }
+
+
+        }
+
         public IEnumerable<GiftCardViewModel> GetCards()
         {
             using (var context = new ApplicationDbContext())
@@ -45,7 +66,6 @@ namespace GiftHub.Services
                                 .Company
                                 .Where(e => e.CompanyName == model.CompanyName)
                                 .FirstOrDefault();
-
 
                 var companyId = company.CompanyId;
 
