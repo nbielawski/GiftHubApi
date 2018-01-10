@@ -35,6 +35,19 @@ namespace GiftHub.API.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("api/CompanyNames")]
+        public IHttpActionResult GetCompaniesDropdown()
+        {
+            GiftCardService svc = CreateCardService();
+            var list = svc.CompaniesDropdown();
+            return Ok(list);
+
+            
+        }
+
+
+
         private GiftCardService CreateCardService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
