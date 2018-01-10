@@ -33,13 +33,6 @@ namespace GiftHub.Services
 
 
                 return query.ToArray();
-                ////var total = GetDonation().Sum(e => Convert.ToInt64(e.Amount));
-                ////return query;
-                ////sum = GetDonation().Sum();
-                ////GetDonation().Sum(e => e.Amount)
-
-                //return query;
-                //decimal totalDonation = (from x in GetDonation() select x.Amount).Sum();
             }
 
 
@@ -64,9 +57,6 @@ namespace GiftHub.Services
                 return query.ToArray();
             }
         }
-
-        //separate service method grabbin all the specific users donations, adding them, then displaying to user.
-        //giftcard table, and account donation column
 
         public bool CreateGiftCard(GiftCardCreateViewModel model)
         {

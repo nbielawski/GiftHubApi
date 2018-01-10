@@ -39,14 +39,8 @@ namespace GiftHub.API.Controllers
             return cardService;
         }
 
-        //public IHttpActionResult GetBalance()
-        //{
-        //    var userId = Guid.Parse(User.Identity.GetUserId());
-        //    var cardService = new GiftCardService(userId);
-        //    var balance = cardService.GetDonation();
-        //    return Ok(balance);
-        //}
-
+        [HttpGet]
+        [Route("API/TotalDonations")]
         public decimal TotalDonation()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
