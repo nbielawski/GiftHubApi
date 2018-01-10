@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201801091946569_AddedTotalDonationToAppUser.Designer.cs">
       <DependentUpon>201801091946569_AddedTotalDonationToAppUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801100253383_TookTotalDonationOffUserTable.cs" />
+    <Compile Include="Migrations\201801100253383_TookTotalDonationOffUserTable.Designer.cs">
+      <DependentUpon>201801100253383_TookTotalDonationOffUserTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801091946569_AddedTotalDonationToAppUser.resx">
       <DependentUpon>201801091946569_AddedTotalDonationToAppUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801100253383_TookTotalDonationOffUserTable.resx">
+      <DependentUpon>201801100253383_TookTotalDonationOffUserTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
