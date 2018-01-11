@@ -136,7 +136,7 @@ namespace GiftHub.API.Controllers
         //  GET api/Account/AdminCheck
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("adminCheck")]
-        [HttpPost]
+        [HttpGet]
         public bool GetAdmin()
         {
 
