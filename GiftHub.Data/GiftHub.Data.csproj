@@ -56,42 +56,12 @@
     <Compile Include="Company.cs" />
     <Compile Include="GiftCard.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201801050308277_Initial.cs" />
-    <Compile Include="Migrations\201801050308277_Initial.Designer.cs">
-      <DependentUpon>201801050308277_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801081452589_CompanyAmount.cs" />
-    <Compile Include="Migrations\201801081452589_CompanyAmount.Designer.cs">
-      <DependentUpon>201801081452589_CompanyAmount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801091946569_AddedTotalDonationToAppUser.cs" />
-    <Compile Include="Migrations\201801091946569_AddedTotalDonationToAppUser.Designer.cs">
-      <DependentUpon>201801091946569_AddedTotalDonationToAppUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801100253383_TookTotalDonationOffUserTable.cs" />
-    <Compile Include="Migrations\201801100253383_TookTotalDonationOffUserTable.Designer.cs">
-      <DependentUpon>201801100253383_TookTotalDonationOffUserTable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801050308277_Initial.resx">
-      <DependentUpon>201801050308277_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801081452589_CompanyAmount.resx">
-      <DependentUpon>201801081452589_CompanyAmount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801091946569_AddedTotalDonationToAppUser.resx">
-      <DependentUpon>201801091946569_AddedTotalDonationToAppUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801100253383_TookTotalDonationOffUserTable.resx">
-      <DependentUpon>201801100253383_TookTotalDonationOffUserTable.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
