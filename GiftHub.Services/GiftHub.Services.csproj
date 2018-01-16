@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="CompanyService.cs" />
     <Compile Include="GiftCardService.cs" />
+    <Compile Include="ManageUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
