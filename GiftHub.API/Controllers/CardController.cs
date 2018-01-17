@@ -33,6 +33,25 @@ namespace GiftHub.API.Controllers
         }
 
         [HttpGet]
+        [Route("api/Expirations")]
+        public IHttpActionResult GetExpirations()
+        {
+            GiftCardService cardService = CreateCardService();
+
+            var cards = cardService.GetExpirationCards();
+
+            if (cards != null)
+            {
+                return Ok(cards);
+            }
+            else
+            {
+                return BadRequest();
+            }
+            
+        }
+
+        [HttpGet]
         [Route("api/CompanyNames")]
         public IHttpActionResult GetCompaniesDropdown()
         {
