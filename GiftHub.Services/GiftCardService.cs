@@ -54,7 +54,9 @@ namespace GiftHub.Services
                                     }
                                 );
 
-                return query.ToArray();
+                return query
+                        .OrderByDescending(x => x.DonationUtc)
+                        .ToArray();
             }
         }
 
