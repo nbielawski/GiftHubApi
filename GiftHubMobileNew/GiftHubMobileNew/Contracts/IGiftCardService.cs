@@ -10,6 +10,6 @@ namespace GiftHubMobileNew.Contracts
     {
         Task<bool> Login(string username, string password);
 
-        Task<bool> AddNew(GiftCardCreateViewModel card);
+        Task<bool> MakeDonationAsync(GiftCardCreateViewModel card);
     }
 }

@@ -15,6 +15,8 @@ namespace GiftHubMobileNew.Pages
 		public GiftCardCreatePage ()
 		{
 			InitializeComponent ();
-		}
+            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasBackButton(this, false);
+        }
 	}
 }
