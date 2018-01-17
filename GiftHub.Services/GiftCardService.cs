@@ -60,8 +60,32 @@ namespace GiftHub.Services
             }
         }
 
+        public IEnumerable<ExpirationCardViewModel> GetExpirationCards()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var query = context
+                                .GiftCard
+                                .Where(e => e.ExpirationDate != null)
+                                .Select(
+                                    e => new ExpirationCardViewModel
+                                    {
+                                        GiftCardId = e.GiftCardId,
+                                        CompanyName = e.Company.CompanyName,
+                                        Amount = e.Amount,
+                                        ExpirationDate = e.ExpirationDate
+                                    }
+                                );
+
+                return query
+                        .OrderBy(x => x.ExpirationDate)
+                        .ToArray();
+            }
+        }
+
         public bool CreateGiftCard(GiftCardCreateViewModel model)
         {
+
             using (var context = new ApplicationDbContext())
             {
                 var company = context
