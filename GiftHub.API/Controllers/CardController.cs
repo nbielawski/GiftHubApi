@@ -43,8 +43,6 @@ namespace GiftHub.API.Controllers
             
         }
 
-
-
         private GiftCardService CreateCardService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
@@ -61,5 +59,6 @@ namespace GiftHub.API.Controllers
             var total = cardService.GetDonation().Sum(e => e.Amount);
             return total;
         }
+ 
     }
 }
