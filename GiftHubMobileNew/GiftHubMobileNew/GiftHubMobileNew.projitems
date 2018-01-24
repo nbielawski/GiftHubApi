@@ -21,8 +21,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\IGiftCardService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GiftCardCreate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\GiftCardCreatePage.xaml.cs">
-      <DependentUpon>GiftCardCreatePage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CreateCardPage.xaml.cs">
+      <DependentUpon>CreateCardPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml.cs">
@@ -35,16 +35,16 @@
       <DependentUpon>GiftCardsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\FakeGiftCardService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\GiftsCardService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\GiftCardService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\GiftCardCreatePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\CreateCardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

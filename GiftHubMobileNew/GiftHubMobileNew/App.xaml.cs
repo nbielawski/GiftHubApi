@@ -10,7 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
-[assembly: Xamarin.Forms.Dependency(typeof(GiftsCardService))]
+[assembly: Xamarin.Forms.Dependency(typeof(GiftCardService))]
 namespace GiftHubMobileNew
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -22,6 +22,7 @@ namespace GiftHubMobileNew
 			InitializeComponent();
 
             this.MainPage = new NavigationPage(new LoginPage());
+            
         }
 
 		protected override void OnStart ()

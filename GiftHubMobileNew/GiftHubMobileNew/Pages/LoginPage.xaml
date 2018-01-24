@@ -5,9 +5,9 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="10">
             <Image Source="GiftHubIcon.png" />
-            <Label Text="Welcome to Github!" FontSize="Large" Margin="0,5,0,20" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+            <Label Text="Welcome to Gifthub!" FontSize="Large" Margin="0,5,0,20" HorizontalTextAlignment="Center" FontAttributes="Bold" />
             <Label Text="Username:" Margin="0,0,0,2" />
-            <Entry Placeholder="email@domain.com" x:Name="fldUsername" Keyboard="Email" Margin="0,0,0,5" />
+            <Entry Placeholder="Username" x:Name="fldUsername" Keyboard="Email" Margin="0,0,0,5" />
             <Label Text="Password:" Margin="0,0,0,2" />
             <Entry Placeholder="enter password" x:Name="fldPassword" IsPassword="True" Margin="0,0,0,5" />
             <Button x:Name="btnLogin" Text="Log In" Margin="0,0,0,40" Clicked="BtnLogin_OnClicked"></Button>

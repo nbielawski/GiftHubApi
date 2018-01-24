@@ -14,7 +14,7 @@ namespace GiftHubMobileNew.Pages
     {
         public LoginPage()
         {
-            InitializeComponent();
+            InitializeComponent();           
             NavigationPage.SetHasNavigationBar(this, false);
             NavigationPage.SetHasBackButton(this, false);
         }
@@ -36,14 +36,12 @@ namespace GiftHubMobileNew.Pages
 
             await App.GiftCardService.Login(fldUsername.Text.Trim(), fldPassword.Text)
                 .ContinueWith(async (task) =>
-
                     {
                         var loggedIn = task.Result;
 
                         // Let them know if login failed.
                         if (!loggedIn)
                         {
-
                             await DisplayAlert("UhOh", "Login failed.", "K Bye");
                             fldUsername.IsEnabled = true;
                             fldPassword.IsEnabled = true;
@@ -54,9 +52,9 @@ namespace GiftHubMobileNew.Pages
 
                         pleaseWait.IsRunning = false;
                         await Navigation.PushAsync(new GiftCardsPage(), true);
+                        
 
                     }, TaskScheduler.FromCurrentSynchronizationContext());
-
         }
     }
 }

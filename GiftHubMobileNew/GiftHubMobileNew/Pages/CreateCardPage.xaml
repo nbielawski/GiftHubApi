@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="GiftHubMobileNew.Pages.CreateCardPage"
+             Title="Make A Donation">
+    <ContentPage.Content>
+        <ScrollView>            
+            <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" Margin="5,10,5,5">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" x:Name="panProgress" IsVisible="false">
+                    <ActivityIndicator x:Name="pleaseWait" />
+                    <Label x:Name="fldProgressMessage" />
+                </StackLayout>         
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Company Name:"/>
+                    <Picker x:Name="MainPicker" ItemsSource="{Binding CompanyList}" ItemDisplayBinding="{Binding CompanyName}" Title="Select Company">                        
+                    </Picker>
+                </StackLayout>             
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Card Number:" />
+                    <Entry x:Name="fldCardNumber"  HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Amount" />
+                    <Entry x:Name="fldAmount"  HorizontalOptions="FillAndExpand"  Keyboard="Numeric"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Expiration Date:"/>
+                    <DatePicker x:Name="fldExpirationDate" VerticalOptions="CenterAndExpand" Format="MM-dd-yyyy" 
+                                MinimumDate="{x:Static sys:DateTime.Now}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Access Number" />
+                    <Entry x:Name="fldAccessNumber"  HorizontalOptions="FillAndExpand" />
+                </StackLayout>                              
+                <Button x:Name="btnSave" Text="Save" Margin="0, 20, 0, 0" Clicked="BtnSave_OnClicked"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

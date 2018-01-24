@@ -1,5 +1,6 @@
 ﻿using GiftHub.Models;
 using GiftHubMobileNew.Contracts;
+using GiftHubMobileNew.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,16 @@ namespace GiftHubMobileNew.Services
         public async Task<bool> Login(string username, string password)
         {
             return true;
+        }
+
+        public Task<List<GiftCardViewModel>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<CompanyDropDown>> GetCompanies()
+        {
+            throw new NotImplementedException();
         }
     }
 }

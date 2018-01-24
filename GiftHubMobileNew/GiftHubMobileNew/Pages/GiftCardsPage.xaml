@@ -1,12 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GiftHubMobileNew.Pages.GiftCardsPage">
+             x:Class="GiftHubMobileNew.Pages.GiftCardsPage"
+             Title="My Donations"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Hello, world!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="10">
+            <ListView x:Name="lvwCards" ItemSelected="LvwCards_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*" />
+                                    <ColumnDefinition Width="0.3*" />
+                                    <ColumnDefinition Width="0.3*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding CompanyName}" FontAttributes="Bold" />
+                                <Label Grid.Column="1" Text="{Binding Amount}" />
+                                <Label Grid.Column="2" Text="{Binding DonationUtc, StringFormat='{}{0:MM/dd/yyyy }'}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="You don't have any donations. Why don't you make one?" x:Name="lblNoCards" IsVisible="False" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
